@@ -23,7 +23,14 @@ namespace TempleProject.Controllers
             return View();
         }
         // this is to go to the form 
+        [HttpGet]
         public IActionResult ScheduleForm ()
+        {
+            return View();
+        }
+        // Need to change this eventually to go to the right page after you submit the form
+        [HttpPost]
+        public IActionResult ScheduleForm (ApplicationResponse ar)
         {
             return View();
         }
