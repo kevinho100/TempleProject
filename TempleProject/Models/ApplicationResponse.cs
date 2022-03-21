@@ -9,15 +9,15 @@ namespace TempleProject.Models
         [Required]
         public int AppointmentID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter the name of the group")]
         public string GroupName { get; set; }
 
         [MaxLength(15)]
-        [Required]
+        [Required(ErrorMessage = "The size of the group must be between 1 and 15")]
         public int GroupSize { get; set; }
 
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Please enter an Email address")]
         public string Email { get; set; }
 
         [Phone]
