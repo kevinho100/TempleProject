@@ -24,6 +24,11 @@ namespace TempleProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<TempleApplicationContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:TempleConnection"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -22,7 +22,11 @@ namespace TempleProject.Controllers
         {
             return View();
         }
-
+        // this is to go to the form 
+        public IActionResult ScheduleForm ()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
