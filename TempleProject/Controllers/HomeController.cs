@@ -11,8 +11,7 @@ namespace TempleProject.Controllers
 {
     public class HomeController : Controller
     {
-        
-
+       
         public HomeController()
         {
             
@@ -31,6 +30,11 @@ namespace TempleProject.Controllers
         // Need to change this eventually to go to the right page after you submit the form
         [HttpPost]
         public IActionResult ScheduleForm (ApplicationResponse ar)
+        {
+            return View();
+        }
+
+        public IActionResult ScheduledAppointments ()
         {
             return View();
         }
