@@ -23,5 +23,9 @@ namespace TempleProject.Models
         [Phone]
         public string Phone { get; set; }
 
+
+        //Foreign key relationship
+        public int TimeId { get; set; }
+        public Time Time { get; set; }
     }
 }
