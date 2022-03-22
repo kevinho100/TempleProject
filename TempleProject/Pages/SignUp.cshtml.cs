@@ -9,8 +9,6 @@ namespace TempleProject.Pages
 {
     public class SignUpModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+        
     }
 }
