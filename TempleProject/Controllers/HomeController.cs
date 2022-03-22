@@ -11,10 +11,11 @@ namespace TempleProject.Controllers
 {
     public class HomeController : Controller
     {
+        private TempleApplicationContext blahContext { get; set; }
        
-        public HomeController()
+        public HomeController(TempleApplicationContext temple)
         {
-            
+            blahContext = temple;
         }
 
         public IActionResult Index()
@@ -31,7 +32,9 @@ namespace TempleProject.Controllers
         [HttpPost]
         public IActionResult ScheduleForm (ApplicationResponse ar)
         {
-            return View();
+            blahContext.Add(ar);
+            blahContext.SaveChanges();
+            return View("ScheduledAppointments");
         }
 
         public IActionResult ScheduledAppointments ()
