@@ -1,0 +1,26 @@
+﻿@model List<Time>
+@{
+}
+
+
+<h2>Available Time Slots</h2>
+
+<table class="table table-bordered table striped">
+
+    @foreach (var t in Model)
+    {
+
+        <tr>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="ID" value="@t.TimeId" />
+                    <input type="hidden" name="returnUrl" value="1" />
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-block btn-primary">@t.Day: @t.TimeSlot</button>
+                    </div> 
+                </form>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -81,5 +81,15 @@ namespace TempleProject.Controllers
             return RedirectToAction("");
         }
 
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            var times = templeContext.times
+                .Where(t => t.IsTaken == false)
+                .ToList();
+
+            return View(times);
+        }
+
     }
 }
