@@ -1,10 +1,16 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+
 namespace TempleProject.Models
 {
-    public class TempleApplicationContext
+    public class TempleApplicationContext : DbContext
     {
-        public TempleApplicationContext()
+        //Constructor
+        public TempleApplicationContext(DbContextOptions<TempleApplicationContext> options) : base(options)
         {
+
         }
+
+        public DbSet<ApplicationResponse> responses { get; set; }
     }
 }
