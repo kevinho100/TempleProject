@@ -52,7 +52,7 @@ namespace TempleProject.Controllers
 
             var application = templeContext.Responses.Single(x => x.AppointmentID == appointmentid);
 
-            return View("", application);
+            return View("ScheduleForm", application);
         }
 
         [HttpPost]
@@ -61,7 +61,7 @@ namespace TempleProject.Controllers
             templeContext.Update(mv);
             templeContext.SaveChanges();
 
-            return RedirectToAction("");
+            return RedirectToAction("TempleList");
         }
 
 
@@ -80,7 +80,7 @@ namespace TempleProject.Controllers
             templeContext.Responses.Remove(mv);
             templeContext.SaveChanges();
 
-            return RedirectToAction("");
+            return RedirectToAction("TempleList");
         }
 
     }
