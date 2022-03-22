@@ -9,6 +9,8 @@
 <div>
 
     <form method="post">
+        <div asp-validation-summary="All"></div>
+        <input type="hidden" name="TimeId" value="TimeId" />
         <label asp-for="GroupName">Group Name: </label>
         <input asp-for="GroupName" /> <br />
 

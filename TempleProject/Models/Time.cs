@@ -6,6 +6,7 @@ namespace TempleProject.Models
     public class Time
     {
         [Key]
+        [Required]
         public int TimeId { get; set; }
 
         [Required]
