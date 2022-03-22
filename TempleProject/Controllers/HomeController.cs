@@ -39,7 +39,9 @@ namespace TempleProject.Controllers
 
         public IActionResult ScheduledAppointments ()
         {
-            return View();
+            var appointments = templeContext.Responses.ToList();
+
+            return View(appointments);
         }
 
 
