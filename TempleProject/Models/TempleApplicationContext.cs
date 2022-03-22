@@ -11,6 +11,6 @@ namespace TempleProject.Models
 
         }
 
-        public DbSet<ApplicationResponse> responses { get; set; }
+        public DbSet<ApplicationResponse> Responses { get; set; }
     }
 }

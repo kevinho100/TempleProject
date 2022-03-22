@@ -11,11 +11,11 @@ namespace TempleProject.Controllers
 {
     public class HomeController : Controller
     {
-        private TempleApplicationContext blahContext { get; set; }
+        private TempleApplicationContext templeContext { get; set; }
        
         public HomeController(TempleApplicationContext temple)
         {
-            blahContext = temple;
+            templeContext = temple;
         }
 
         public IActionResult Index()
@@ -32,8 +32,8 @@ namespace TempleProject.Controllers
         [HttpPost]
         public IActionResult ScheduleForm (ApplicationResponse ar)
         {
-            blahContext.Add(ar);
-            blahContext.SaveChanges();
+            templeContext.Add(ar);
+            templeContext.SaveChanges();
             return View("ScheduledAppointments");
         }
 
@@ -41,6 +41,45 @@ namespace TempleProject.Controllers
         {
             return View();
         }
-       
+
+
+        [HttpGet]
+        public IActionResult Edit(int appointmentid)
+        {
+            //ViewBag.Category = templeContext.Category.ToList();
+
+            var application = templeContext.Responses.Single(x => x.AppointmentID == appointmentid);
+
+            return View("", application);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ApplicationResponse mv)
+        {
+            templeContext.Update(mv);
+            templeContext.SaveChanges();
+
+            return RedirectToAction("");
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int applicationid)
+        {
+
+            var application = templeContext.Responses.Single(x => x.AppointmentID == applicationid);
+
+            return View(application);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ApplicationResponse mv)
+        {
+            templeContext.Responses.Remove(mv);
+            templeContext.SaveChanges();
+
+            return RedirectToAction("");
+        }
+
     }
 }
