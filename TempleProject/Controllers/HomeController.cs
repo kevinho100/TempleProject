@@ -84,28 +84,6 @@ namespace TempleProject.Controllers
             return View(application);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [HttpPost]
         public IActionResult Delete(ApplicationResponse mv)
         {
@@ -115,6 +93,7 @@ namespace TempleProject.Controllers
             return RedirectToAction("TempleList");
         }
 
+
         [HttpGet]
         public IActionResult SignUp()
         {
@@ -123,6 +102,12 @@ namespace TempleProject.Controllers
                 .ToList();
 
             return View(times);
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(int timeId)
+        {
+            return View("ScheduleForm");
         }
 
     }
