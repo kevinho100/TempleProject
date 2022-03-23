@@ -16,7 +16,8 @@
                     <input type="hidden" name="ID" value="@t.TimeId" />
                     <input type="hidden" name="returnUrl" value="1" />
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-block btn-primary">@t.Day: @t.TimeSlot</button>
+                        <button type="submit" class="btn btn-block btn-primary" asp-controller="Home" asp-action="SignUp"
+                                asp-route-id="@t.TimeId">@t.Day: @t.TimeSlot</button>
                     </div> 
                 </form>
             </td>
