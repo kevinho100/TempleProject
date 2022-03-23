@@ -35,7 +35,7 @@ namespace TempleProject.Controllers
         {
             templeContext.Add(ar);
             templeContext.SaveChanges();
-            return View("TempleList");
+            return View("ScheduledAppointments");
         }
 
         public IActionResult ScheduledAppointments ()
