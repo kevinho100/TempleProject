@@ -112,7 +112,7 @@ namespace TempleProject.Controllers
             //var application = templeContext.Times.Single(x => x.TimeId == timeId);
 
 
-            return RedirectToAction("ScheduleForm");
+            return View("ScheduleForm");
         }
 
     }
