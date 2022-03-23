@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using TempleProject.Models;
 
@@ -44,11 +45,21 @@ namespace TempleProject.Controllers
             return View(appointments);
         }
 
+        [HttpGet]
+        public IActionResult TempleList()
+        {
+            var applications = templeContext.Responses
+                .Include(x => x.Time)
+                .ToList();
+
+
+            return View(applications);
+        }
 
         [HttpGet]
         public IActionResult Edit(int appointmentid)
         {
-            //ViewBag.Category = templeContext.Category.ToList();
+            ViewBag.Time = templeContext.times.ToList();
 
             var application = templeContext.Responses.Single(x => x.AppointmentID == appointmentid);
 
