@@ -75,7 +75,6 @@ namespace TempleProject.Controllers
             return RedirectToAction("TempleList");
         }
 
-
         [HttpGet]
         public IActionResult Delete(int applicationid)
         {
@@ -84,6 +83,28 @@ namespace TempleProject.Controllers
 
             return View(application);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         [HttpPost]
         public IActionResult Delete(ApplicationResponse mv)
