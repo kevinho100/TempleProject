@@ -12,10 +12,12 @@ namespace TempleProject.Models
         }
 
         public DbSet<ApplicationResponse> Responses { get; set; }
-        public DbSet<Time> times { get; set; }
+        public DbSet<Time> Times { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
+
         {
+
             mb.Entity<Time>().HasData(
 
                 new Time

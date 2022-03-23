@@ -23,6 +23,7 @@ namespace TempleProject.Controllers
         {
             return View();
         }
+
         // this is to go to the form 
         [HttpGet]
         public IActionResult ScheduleForm ()
@@ -33,9 +34,10 @@ namespace TempleProject.Controllers
         [HttpPost]
         public IActionResult ScheduleForm (ApplicationResponse ar)
         {
-            templeContext.Add(ar);
+            
+            templeContext.Update(ar);
             templeContext.SaveChanges();
-            return View("TempleList");
+            return RedirectToAction("TempleList");
         }
 
         public IActionResult ScheduledAppointments ()
@@ -59,13 +61,12 @@ namespace TempleProject.Controllers
         [HttpGet]
         public IActionResult Edit(int appointmentid)
         {
-            ViewBag.Time = templeContext.times.ToList();
+            ViewBag.Time = templeContext.Times.ToList();
 
             var application = templeContext.Responses.Single(x => x.AppointmentID == appointmentid);
 
             return View("ScheduleForm", application);
         }
-
         [HttpPost]
         public IActionResult Edit(ApplicationResponse mv)
         {
@@ -75,6 +76,7 @@ namespace TempleProject.Controllers
             return RedirectToAction("TempleList");
         }
 
+
         [HttpGet]
         public IActionResult Delete(int applicationid)
         {
@@ -83,7 +85,6 @@ namespace TempleProject.Controllers
 
             return View(application);
         }
-
         [HttpPost]
         public IActionResult Delete(ApplicationResponse mv)
         {
@@ -97,17 +98,21 @@ namespace TempleProject.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
-            var times = templeContext.times
+            var times = templeContext.Times
                 .Where(t => t.IsTaken == false)
                 .ToList();
 
             return View(times);
         }
-
         [HttpPost]
         public IActionResult SignUp(int timeId)
         {
-            return View("ScheduleForm");
+            
+
+            //var application = templeContext.Times.Single(x => x.TimeId == timeId);
+
+
+            return RedirectToAction("ScheduleForm");
         }
 
     }
