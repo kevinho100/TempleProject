@@ -23,7 +23,36 @@ namespace TempleProject.Controllers
         {
             return View();
         }
+        // start paste 
+        // this is to go to the form 
+        [HttpGet]
+        public IActionResult CreateScheduleForm()
+        {
+            return View();
+        }
+        // Need to change this eventually to go to the right page after you submit the form
+        [HttpPost]
+        public IActionResult CreateScheduleForm(ApplicationResponse ar)
+        {
+            int timeId = ar.TimeId;
 
+            if (ModelState.IsValid)
+            {
+                templeContext.Update(ar);
+
+
+                Time timeSlot = templeContext.Times.Single(x => x.TimeId == timeId);
+                timeSlot.IsTaken = true;
+                templeContext.SaveChanges();
+
+                return RedirectToAction("TempleList");
+            }
+
+            return View(ar);
+
+
+        }
+        // stop where pasted
         // this is to go to the form 
         [HttpGet]
         public IActionResult ScheduleForm ()
@@ -125,7 +154,7 @@ namespace TempleProject.Controllers
             //var application = templeContext.Times.Single(x => x.TimeId == timeId);
 
 
-            return View("ScheduleForm");
+            return View("CreateScheduleForm");
         }
 
     }
