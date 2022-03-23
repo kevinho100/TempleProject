@@ -34,10 +34,23 @@ namespace TempleProject.Controllers
         [HttpPost]
         public IActionResult ScheduleForm (ApplicationResponse ar)
         {
-            
-            templeContext.Update(ar);
-            templeContext.SaveChanges();
-            return RedirectToAction("TempleList");
+            int timeId = ar.TimeId;
+
+            if (ModelState.IsValid)
+            {
+                templeContext.Update(ar);
+
+
+                Time timeSlot = templeContext.Times.Single(x => x.TimeId == timeId);
+                timeSlot.IsTaken = true;
+                templeContext.SaveChanges();
+
+                return RedirectToAction("TempleList");
+            }
+
+            return View(ar);
+
+
         }
 
         public IActionResult ScheduledAppointments ()
